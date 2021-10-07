@@ -2,6 +2,11 @@ package pl.testuj.exceptions_examples;
 
 import pl.testuj.exceptions_examples.exceptions.ImproperNumberException;
 
+/*
+ZADANIE DOMOWE:
+- napisz obsługę własnego wyjątku ImproperNameException - wyjątek rzucany jeśli
+String jest null lub pusty
+ */
 public class ExceptionsApp {
     public static void main(String[] args) throws ImproperNumberException {
         int[] numbers = {1, 2, 3, 4, 5};
@@ -33,16 +38,8 @@ public class ExceptionsApp {
             checkNumber(number);
         } catch (ImproperNumberException e) {
             System.out.println("IMPROPER NUMBER EXCEPTION");
+            System.out.println("Podany błedny numer: " + e.getNumber());
         }
-//        try {
-//            if (number.length() > 9) {
-//                throw new ImproperNumberException(number); // rzucenie wyjątku z parametrem
-//            }
-//        } catch (ImproperNumberException e) {
-//            System.out.println("IMPROPER NUMBER EXCEPTION");
-//        }
-
-
         System.out.println("Koniec działania programu");
     }
 
