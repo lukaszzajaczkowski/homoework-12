@@ -12,7 +12,7 @@ ZADANIE DOMOWE:
 String jest null lub pusty
  */
 
-            String name = null;
+            String name = "";
 
             try {
                 checkName(name);
@@ -25,7 +25,7 @@ String jest null lub pusty
 
         }
             public static void checkName (String name) throws ImproperNameException {
-                if (name == null) {
+                if (name == null || name == "") {
                     throw new ImproperNameException(name);
                 }
             }
