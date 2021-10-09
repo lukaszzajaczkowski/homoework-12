@@ -1,52 +1,32 @@
 package pl.testuj.exceptions_examples;
 
 import pl.testuj.exceptions_examples.exceptions.ImproperNumberException;
+import pl.testuj.exceptions_examples.exceptions.ImproperNameException;
 
-/*
+
+public class ExceptionsApp {
+    public static void main(String[] args) throws ImproperNameException {
+    /*
 ZADANIE DOMOWE:
 - napisz obsługę własnego wyjątku ImproperNameException - wyjątek rzucany jeśli
 String jest null lub pusty
  */
-public class ExceptionsApp {
-    public static void main(String[] args) throws ImproperNumberException {
-        int[] numbers = {1, 2, 3, 4, 5};
-        String name = null;
 
-        // wewnątrz bloku try podajemy fragment kodu, który potencjalnie może rzucić wyjątek
-        // w momencie wyjątku wykonuje się odpowiedni blok catch
-        try {
-            System.out.println(numbers[0]); // tutaj idziemy do linii 16
-            //System.out.println(name.length());
-        } catch (NullPointerException exception) {
-            System.out.println("Wywołujesz metodę na obiekcie null");
-        } catch (ArrayIndexOutOfBoundsException exception) {
-            System.out.println("Odwołujesz się poza zakres tablicy");
-        } finally { // dodajemy instrukcje, które muszą się wykonać niezależnie czy jest wyjątek czy nie
-            System.out.println("Koniec try...catch");
+            String name = null;
+
+            try {
+                checkName(name);
+                System.out.println("Poprawne działanie programu");
+            } catch (ImproperNameException e2) {
+                System.out.println("IMPROPER NAME EXCEPTION");
+                System.out.println("Błędne imię to " + e2.getName());
+            }
+            System.out.println("Koniec programu");
+
         }
-
-        try {
-            System.out.println(numbers[3]);
-        } catch (Exception exception) { // przechwytujemy jakikolwiek wyjątek
-            exception.printStackTrace();
-        }
-
-        String number = "1234567890";
-
-        // jeśli długość > 9 to rzuć wyjątek ImproperNumberException
-        try {
-            checkNumber(number);
-        } catch (ImproperNumberException e) {
-            System.out.println("IMPROPER NUMBER EXCEPTION");
-            System.out.println("Podany błedny numer: " + e.getNumber());
-        }
-        System.out.println("Koniec działania programu");
-    }
-
-    // throws - przerzucenie obsługi wyjątku w inne miejsce programu
-    public static void checkNumber(String number) throws ImproperNumberException {
-        if (number.length() > 9) {
-            throw new ImproperNumberException(number); // rzucenie wyjątku z parametrem
-        }
-    }
+            public static void checkName (String name) throws ImproperNameException {
+                if (name == null) {
+                    throw new ImproperNameException(name);
+                }
+            }
 }
